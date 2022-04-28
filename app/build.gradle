@@ -1,0 +1,80 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+    id 'com.google.android.libraries.mapsplatform.secrets-gradle-plugin'
+    id 'kotlin-parcelize'
+    id 'dagger.hilt.android.plugin'
+    id 'kotlin-kapt'
+    id 'androidx.navigation.safeargs.kotlin'
+}
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.maxab.task"
+        minSdk 23
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_11
+        targetCompatibility JavaVersion.VERSION_11
+    }
+    kotlinOptions {
+        jvmTarget = JavaVersion.VERSION_11.toString()
+    }
+}
+
+dependencies {
+    implementation deps.lifeCycleViewModelKtx
+    implementation deps.lifecycleRuntimeKtx
+    implementation deps.navFragmentKtx
+    implementation deps.navUIKtx
+    implementation deps.navRuntimeKtx
+    implementation deps.collectionKtx
+    implementation deps.activityKtx
+    implementation deps.fragmentKtx
+    implementation deps.appCompat
+    implementation deps.materialDesign
+    implementation deps.constraintLayout
+    implementation deps.coreKtx
+    //Hilt
+    implementation deps.hilt
+    kapt deps.hiltAndroidCompilerKapt
+    kapt deps.hiltCompilerKapt
+    implementation deps.hiltFragment
+    //Logging
+    implementation deps.timber
+    //Image Loading Coil
+    implementation deps.coilBase
+
+    implementation deps.gson
+    implementation deps.sdp
+    implementation deps.ssp
+    //Network Retrofit
+    implementation deps.retrofit
+    implementation deps.gsonConverter
+    implementation deps.loggingInterceptor
+    implementation deps.coroutineAdapterRetrofit
+    //Room
+    implementation deps.room
+    kapt deps.roomKapt
+    implementation deps.roomKtx
+    implementation deps.roomPagingKtx
+
+    //Testing
+    testImplementation 'junit:junit:4.13.2'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.3'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+}
