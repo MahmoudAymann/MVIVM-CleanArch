@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation_graph"
+    app:startDestination="@id/currencyConverterFragment">
+
+    <fragment
+        android:id="@+id/currencyConverterFragment"
+        android:name="com.maxab.task.feature.currency_converter.ui.CurrencyConverterFragment"
+        android:label="CurrencyConverterFragment"
+        tools:layout="@layout/fragment_currency_converter">
+        <argument
+            android:name="fromCurrency"
+            app:argType="com.maxab.task.feature.currency_converter.data.ConverterItem" />
+        <argument
+            android:name="toCurrency"
+            app:argType="com.maxab.task.feature.currency_converter.data.ConverterItem" />
+    </fragment>
+</navigation>

@@ -1,12 +1,9 @@
 package com.maxab.task.main
 
-import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
-import com.maxab.task.R
+import com.maxab.task.core.android.BaseActivity
+import com.maxab.task.databinding.ActivityMainBinding
 
-class MainActivity : AppCompatActivity() {
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
-    }
+class MainActivity : BaseActivity<ActivityMainBinding>(ActivityMainBinding::inflate) {
+
+
 }
