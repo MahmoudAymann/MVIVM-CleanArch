@@ -13,6 +13,10 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.maxab.task.core.android.BaseListAdapter
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
@@ -55,3 +59,15 @@ fun Activity.showKeyboard() = WindowInsetsControllerCompat(window, window.decorV
 
 fun Activity.hideKeyboard() =
     WindowInsetsControllerCompat(window, window.decorView).hide(WindowInsetsCompat.Type.ime())
+
+fun View.show(show: Boolean = true) =
+    if (show) visibility = View.VISIBLE else visibility = View.GONE
+
+fun RecyclerView.setup(adapter: BaseListAdapter<*, *>, showDivider: Boolean) {
+    val decoration = DividerItemDecoration(
+        context,
+        (layoutManager as LinearLayoutManager).orientation
+    )
+    addItemDecoration(decoration)
+    this.adapter = adapter
+}

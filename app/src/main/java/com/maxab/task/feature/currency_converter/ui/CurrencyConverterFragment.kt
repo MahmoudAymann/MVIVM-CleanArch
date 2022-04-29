@@ -22,6 +22,7 @@ class CurrencyConverterFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        handleViewState()
         initUI()
         handleTextInputs()
     }
@@ -60,7 +61,12 @@ class CurrencyConverterFragment :
             }
         }
         showKeyboard()
-        handleViewState()
+        viewModel.convert(
+            ConverterParam(
+                amount = args.fromCurrency.amount,
+                exchangeRate = args.toCurrency.exchangeRate
+            )
+        )
     }
 
 
