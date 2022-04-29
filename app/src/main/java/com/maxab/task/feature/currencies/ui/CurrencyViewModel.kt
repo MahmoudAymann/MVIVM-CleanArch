@@ -2,8 +2,8 @@ package com.maxab.task.feature.currencies.ui
 
 import androidx.lifecycle.viewModelScope
 import com.maxab.task.core.android.BaseViewModel
-import com.maxab.task.core.android.UiState
-import com.maxab.task.feature.currencies.data.CurrencyItem
+import com.maxab.task.core.arch.UiState
+import com.maxab.task.feature.currencies.data.entity.CurrencyItem
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch

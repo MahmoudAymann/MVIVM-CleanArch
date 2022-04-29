@@ -1,5 +1,5 @@
 package com.maxab.task.core.arch
 
-interface BaseUseCase<I, O> {
-    fun execute(input: I): O
+abstract class BaseUseCase<I, O> {
+    abstract fun execute(input: I): O
 }

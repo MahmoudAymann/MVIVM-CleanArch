@@ -1,4 +1,4 @@
-package com.maxab.task.feature.currencies.data
+package com.maxab.task.feature.currencies.data.entity
 
 data class CurrencyItem(
     val currency: String,

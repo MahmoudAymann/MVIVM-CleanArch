@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import com.maxab.task.core.android.BaseListAdapter
 import com.maxab.task.core.android.BaseViewHolder
 import com.maxab.task.databinding.ItemCurrencyViewBinding
-import com.maxab.task.feature.currencies.data.CurrencyItem
+import com.maxab.task.feature.currencies.data.entity.CurrencyItem
 
 class CurrencyAdapter(private val currencyItemClickListener: OnCurrencyItemClickListener) :
     BaseListAdapter<ItemCurrencyViewBinding, CurrencyItem>() {

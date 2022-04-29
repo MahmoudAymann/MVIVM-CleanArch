@@ -10,7 +10,7 @@ import com.maxab.task.core.extensions.observe
 import com.maxab.task.core.extensions.setup
 import com.maxab.task.core.extensions.show
 import com.maxab.task.databinding.FragmentCurrencyBinding
-import com.maxab.task.feature.currencies.data.CurrencyItem
+import com.maxab.task.feature.currencies.data.entity.CurrencyItem
 import com.maxab.task.feature.currency_converter.data.ConverterItem
 import dagger.hilt.android.AndroidEntryPoint
 
