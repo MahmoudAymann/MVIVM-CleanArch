@@ -20,10 +20,10 @@ import kotlinx.coroutines.launch
 typealias InflateFragment<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 typealias InflateActivity<T> = (LayoutInflater) -> T
 
-fun <T : Any?, L : StateFlow<T>> LifecycleOwner.observe(sharedFlow: L, body: (T) -> Unit) {
+fun <T : Any?, L : StateFlow<T>> LifecycleOwner.observe(flow: L, body: (T) -> Unit) {
     lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
-            sharedFlow.collect {
+            flow.collect {
                 body.invoke(it)
             }
         }

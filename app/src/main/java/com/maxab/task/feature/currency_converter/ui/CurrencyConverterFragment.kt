@@ -10,7 +10,10 @@ import com.maxab.task.core.extensions.observe
 import com.maxab.task.core.extensions.showKeyboard
 import com.maxab.task.core.extensions.toSafeDouble
 import com.maxab.task.databinding.FragmentCurrencyConverterBinding
+import com.maxab.task.feature.currency_converter.data.ConverterParam
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class CurrencyConverterFragment :
     BaseFragment<FragmentCurrencyConverterBinding>(FragmentCurrencyConverterBinding::inflate) {
 
@@ -19,6 +22,7 @@ class CurrencyConverterFragment :
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        initUI()
         handleTextInputs()
     }
 
@@ -26,9 +30,13 @@ class CurrencyConverterFragment :
         binding.etAmountInput.let { et ->
             et.requestFocus()
             et.doAfterTextChanged {
-                //For test only
                 it?.toString()?.toSafeDouble()?.let { input ->
-                    binding.tvToAmount.text = (input * 0.60).toString()
+                    viewModel.convert(
+                        ConverterParam(
+                            amount = input,
+                            exchangeRate = args.toCurrency.exchangeRate
+                        )
+                    )
                 }
             }
         }
@@ -36,22 +44,20 @@ class CurrencyConverterFragment :
 
     private fun handleViewState() {
         observe(viewModel.uiState) { state ->
-            when (state) {
-                CurrencyConverterUiState.Init -> initUI()
-            }
+            binding.tvToAmount.text = state.amount.toString()
         }
     }
 
     private fun initUI() {
         with(binding) {
-//            args.fromCurrency.let { from ->
-//                etAmountInput.setText(from.amount.toString())
-//                tvFromCurrency.text = from.currency
-//            }
-//            args.toCurrency.let {
-//                tvToAmount.text = it.amount.toString()
-//                tvToCurrency.text = it.currency
-//            }
+            args.fromCurrency.let { from ->
+                etAmountInput.setText(from.amount.toString())
+                tvFromCurrency.text = from.currency
+            }
+            args.toCurrency.let {
+                tvToAmount.text = it.amount.toString()
+                tvToCurrency.text = it.currency
+            }
         }
         showKeyboard()
         handleViewState()
