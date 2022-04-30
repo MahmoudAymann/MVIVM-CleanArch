@@ -4,23 +4,6 @@ import okhttp3.Headers
 import java.io.IOException
 
 sealed class NetworkResponse<out T : Any, out U : Any> {
-
-    companion object {
-        fun <T : Any, U : Any> unknownError(
-            error: Throwable,
-            code: Int? = null,
-            headers: Headers? = null,
-        ): NetworkResponse<T, U> =
-            UnknownError(error, code, headers)
-
-        fun <T : Any, U : Any> success(
-            body: T,
-            headers: Headers? = null,
-            code: Int
-        ): NetworkResponse<T, U> =
-            Success(body, headers, code)
-    }
-
     /**
      * A request that resulted in a response with a 2xx status code that has a body.
      */

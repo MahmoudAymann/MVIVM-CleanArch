@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@android:color/holo_blue_dark">
+    android:background="@android:color/holo_blue_dark"
+    tools:ignore="Overdraw">
     <!--    from currency-->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/cl_from_currency"
@@ -27,7 +28,7 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/et_amount_input"
+                android:id="@+id/etAmountInput"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:hint="@string/currency_input_placeholder"
@@ -57,7 +58,6 @@
 
     <!--    to currency-->
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/cl_to_currency"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_80sdp"
         android:background="@color/white"
@@ -65,7 +65,7 @@
         app:layout_constraintTop_toBottomOf="@id/divider">
 
         <TextView
-            android:id="@+id/tv_to_amount"
+            android:id="@+id/tvToAmount"
             style="@style/CurrencyAmountTextStyle"
             android:layout_width="0dp"
             android:layout_height="wrap_content"

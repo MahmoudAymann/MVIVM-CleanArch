@@ -13,7 +13,6 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/tv_current_currency"
             android:layout_width="wrap_content"
             android:layout_height="0dp"
             android:gravity="center"
@@ -27,7 +26,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.switchmaterial.SwitchMaterial
-            android:id="@+id/switch_currency"
+            android:id="@+id/switchCurrency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/offline"

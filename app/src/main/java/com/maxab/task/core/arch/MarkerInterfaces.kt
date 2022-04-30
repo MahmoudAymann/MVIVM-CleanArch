@@ -1,5 +1,7 @@
 package com.maxab.task.core.arch
 
+import javax.inject.Qualifier
+
 
 interface UiState
 
@@ -9,3 +11,7 @@ interface UiState
 interface HashMapParams {
     fun dataClass(): Any
 }
+
+@Qualifier
+@Retention(AnnotationRetention.BINARY)
+annotation class AuthInterceptorOkHttpClient

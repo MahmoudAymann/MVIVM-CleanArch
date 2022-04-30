@@ -60,8 +60,6 @@ dependencies {
     implementation deps.hiltFragment
     //Logging
     implementation deps.timber
-    //Image Loading Coil
-    implementation deps.coilBase
 
     implementation deps.gson
     implementation deps.sdp
@@ -71,11 +69,6 @@ dependencies {
     implementation deps.gsonConverter
     implementation deps.loggingInterceptor
     implementation deps.coroutineAdapterRetrofit
-    //Room
-    implementation deps.room
-    kapt deps.roomKapt
-    implementation deps.roomKtx
-    implementation deps.roomPagingKtx
 
     //Testing
     testImplementation 'junit:junit:4.13.2'

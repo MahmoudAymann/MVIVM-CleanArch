@@ -1,9 +1,9 @@
 package com.maxab.task.core.network.response
 
-import android.os.Parcelable
-import kotlinx.parcelize.Parcelize
+import com.google.gson.annotations.SerializedName
 
-@Parcelize
 open class BaseResponse(
-    val success: Boolean? = null
-) : Parcelable
+    val success: Boolean? = null,
+    @field:SerializedName("error")
+    val error: Error? = null
+)

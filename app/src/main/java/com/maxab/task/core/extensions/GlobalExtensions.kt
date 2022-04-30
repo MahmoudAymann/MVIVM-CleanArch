@@ -1,9 +1,16 @@
 package com.maxab.task.core.extensions
 
+import android.content.Context
+import android.net.ConnectivityManager
 import com.google.gson.Gson
 import com.maxab.task.core.arch.HashMapParams
 import org.json.JSONObject
 import timber.log.Timber
+
+val Context.connectivityManager: ConnectivityManager
+    get() =
+        this.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+
 
 fun HashMapParams?.toHashMapParams(): HashMap<String, String?>? {
     if (this == null) return null

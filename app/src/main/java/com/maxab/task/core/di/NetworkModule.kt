@@ -1,6 +1,8 @@
 package com.maxab.task.core.di
 
 import com.maxab.task.BuildConfig
+import com.maxab.task.core.arch.AuthInterceptorOkHttpClient
+import com.maxab.task.core.network.FixerInterceptor
 import com.maxab.task.core.network.adapter.NetworkResponseAdapterFactory
 import com.maxab.task.main.service.HomeApiService
 import dagger.Module
@@ -16,6 +18,7 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 @Module
 class NetworkModule {
+
     @Singleton
     @Provides
     fun provideAuthRetrofit(okHttpClient: OkHttpClient): Retrofit {
@@ -32,12 +35,20 @@ class NetworkModule {
     fun provideHomeApiService(retrofit: Retrofit): HomeApiService =
         retrofit.create(HomeApiService::class.java)
 
+    @AuthInterceptorOkHttpClient
+    @Singleton
+    @Provides
+    fun provideFixerInterceptor(): FixerInterceptor =
+        FixerInterceptor()
+
     @Singleton
     @Provides
     fun provideOkHttpClient(
-        loggingInterceptor: HttpLoggingInterceptor
+        loggingInterceptor: HttpLoggingInterceptor,
+        @AuthInterceptorOkHttpClient fixerInterceptor: FixerInterceptor
     ): OkHttpClient {
         val okHttpClientBuilder: OkHttpClient.Builder = OkHttpClient.Builder()
+        okHttpClientBuilder.addInterceptor(fixerInterceptor)
         if (BuildConfig.DEBUG) {
             okHttpClientBuilder.addInterceptor(loggingInterceptor)
         }

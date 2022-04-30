@@ -1,7 +1,6 @@
 package com.maxab.task.core.extensions
 
 import android.app.Activity
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,14 +16,14 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.maxab.task.core.android.BaseListAdapter
-import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
-
 
 typealias InflateFragment<T> = (LayoutInflater, ViewGroup?, Boolean) -> T
 typealias InflateActivity<T> = (LayoutInflater) -> T
 
-fun <T : Any?, L : StateFlow<T>> LifecycleOwner.observe(flow: L, body: (T) -> Unit) {
+fun <T : Any?, L : SharedFlow<T>> LifecycleOwner.observe(flow: L, body: (T) -> Unit) {
     lifecycleScope.launch {
         repeatOnLifecycle(Lifecycle.State.STARTED) {
             flow.collect {
@@ -44,30 +43,22 @@ fun String?.toSafeDouble(returnValue: Double = 0.0): Double {
     }
 }
 
-fun View.showKeyboard() = (this.context as? Activity)?.showKeyboard()
-fun View.hideKeyboard() = (this.context as? Activity)?.hideKeyboard()
-
 fun Fragment.showKeyboard(): Unit? = activity?.let(FragmentActivity::showKeyboard)
-fun Fragment.hideKeyboard() = activity?.hideKeyboard()
-
-fun Context.showKeyboard() = (this as? Activity)?.showKeyboard()
-fun Context.hideKeyboard() = (this as? Activity)?.hideKeyboard()
 
 fun Activity.showKeyboard() = WindowInsetsControllerCompat(window, window.decorView).show(
     WindowInsetsCompat.Type.ime()
 )
 
-fun Activity.hideKeyboard() =
-    WindowInsetsControllerCompat(window, window.decorView).hide(WindowInsetsCompat.Type.ime())
-
 fun View.show(show: Boolean = true) =
     if (show) visibility = View.VISIBLE else visibility = View.GONE
 
 fun RecyclerView.setup(adapter: BaseListAdapter<*, *>, showDivider: Boolean) {
-    val decoration = DividerItemDecoration(
-        context,
-        (layoutManager as LinearLayoutManager).orientation
-    )
-    addItemDecoration(decoration)
+    if (showDivider) {
+        val decoration = DividerItemDecoration(
+            context,
+            (layoutManager as LinearLayoutManager).orientation
+        )
+        addItemDecoration(decoration)
+    }
     this.adapter = adapter
 }

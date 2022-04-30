@@ -32,7 +32,7 @@ internal fun <S : Any, E : Any> Throwable.extractNetworkResponse(
 ): NetworkResponse<S, E> {
     return when (this) {
         is IOException -> NetworkResponse.NetworkError(this)
-        is HttpException -> extractFromHttpException<E>(errorConverter)
+        is HttpException -> extractFromHttpException(errorConverter)
         else -> NetworkResponse.UnknownError(this)
     }
 }
