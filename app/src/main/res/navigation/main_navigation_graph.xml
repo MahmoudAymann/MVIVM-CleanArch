@@ -6,20 +6,20 @@
 
     <fragment
         android:id="@+id/currencyConverterFragment"
-        android:name="com.maxab.task.feature.currency_converter.ui.CurrencyConverterFragment"
+        android:name="com.mayman.mvivm.feature.currency_converter.ui.CurrencyConverterFragment"
         android:label="CurrencyConverterFragment"
         tools:layout="@layout/fragment_currency_converter">
         <argument
             android:name="fromCurrency"
-            app:argType="com.maxab.task.feature.currency_converter.data.ConverterItem" />
+            app:argType="com.mayman.mvivm.feature.currency_converter.data.ConverterItem" />
         <argument
             android:name="toCurrency"
-            app:argType="com.maxab.task.feature.currency_converter.data.ConverterItem" />
+            app:argType="com.mayman.mvivm.feature.currency_converter.data.ConverterItem" />
     </fragment>
 
     <fragment
         android:id="@+id/currencyFragment"
-        android:name="com.maxab.task.feature.currencies.ui.CurrencyFragment"
+        android:name="com.mayman.mvivm.feature.currencies.ui.CurrencyFragment"
         android:label="CurrencyFragment"
         tools:layout="@layout/fragment_currency">
         <action

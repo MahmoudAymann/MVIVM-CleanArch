@@ -18,5 +18,5 @@ dependencyResolutionManagement {
         maven { url "https://jcenter.bintray.com/" }
     }
 }
-rootProject.name = "Maxab Task"
+rootProject.name = "MVIVM"
 include ':app'
