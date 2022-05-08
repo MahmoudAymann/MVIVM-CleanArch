@@ -50,7 +50,7 @@ dependencies {
     implementation deps.activityKtx
     implementation deps.fragmentKtx
     implementation deps.appCompat
-    implementation deps.materialDesign
+    implementation 'com.google.android.material:material:1.6.0'
     implementation deps.constraintLayout
     implementation deps.coreKtx
     //Hilt
@@ -61,14 +61,8 @@ dependencies {
     //Logging
     implementation deps.timber
 
-    implementation deps.gson
     implementation deps.sdp
     implementation deps.ssp
-    //Network Retrofit
-    implementation deps.retrofit
-    implementation deps.gsonConverter
-    implementation deps.loggingInterceptor
-    implementation deps.coroutineAdapterRetrofit
 
     //Testing
     testImplementation 'junit:junit:4.13.2'

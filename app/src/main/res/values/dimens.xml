@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="currency_input_size">@dimen/_20ssp</dimen>
-    <dimen name="currency_text_size">@dimen/_18ssp</dimen>
+
 </resources>
